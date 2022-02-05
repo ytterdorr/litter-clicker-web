@@ -1,24 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import { Button, Divider } from "@material-ui/core";
+import images from './assets/images';
+
+
+const imageTypes = [
+  "nicotine",
+  "plastic",
+  "paper",
+  "metal",
+  "food",
+  "glass",
+  "other"
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          LitterClicker
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className="splash-image">
+        {imageTypes.map(image => {
+          return <img className="smallImage smallMargin" src={images[image]}>
+
+          </img>
+        })}
+      </div>
+      <Button variant="contained" color="primary">
+        Create new session
+      </Button>
+
+
     </div>
+
   );
 }
 

@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.splash-image {
+  display: flex;
+  width: 50vw;
+  min-width: 400px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  
+}
+
+.smallMargin {
+  margin: 0.2rem;
+}
