@@ -17,6 +17,7 @@ const imageTypes = [
 function App() {
   return (
     <div className="main">
+      <h1 className="main-header">LitterClicker</h1>
       <div className="splash-image">
         {imageTypes.map(image => {
           return <img className="smallImage smallMargin" src={images[image]}>
