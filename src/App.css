@@ -49,7 +49,7 @@
 .splash-image {
   display: flex;
   width: 50vw;
-  min-width: 400px;
+  min-width: 300px;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
