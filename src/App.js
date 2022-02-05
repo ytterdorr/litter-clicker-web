@@ -32,8 +32,11 @@ const Home = () => {
           </img>
         })}
       </div>
-      <Button variant="contained" color="primary" href="/session"
-        style={{ padding: "20px" }}
+      <Button
+        variant="contained"
+        color="primary"
+        href="/session"
+        style={{ padding: "10px 20px" }}
       >
         Create new session
       </Button>
