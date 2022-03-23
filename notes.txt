@@ -1,0 +1,7 @@
+What needs to be done:
+- Set up a backend server with express. To handle data collection from MongoDB (hide the api key)
+
+
+
+https://data.mongodb-api.com/app/data-trduh/endpoint/data/beta
+
