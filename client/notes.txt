@@ -1,0 +1,14 @@
+What needs to be done:
+- Set up a backend server with express. To handle data collection from MongoDB (hide the api key)
+- There was something about a special line for heroku to build the client after upload. 
+- Need to set some environment variables in heroku for API access
+
+
+Backend data functions: 
+When pushing a session, there should be some general summation objects that are updated as well. 
+Useful for data displays, so as to not need to download all the data and count on client side. 
+
+
+
+https://data.mongodb-api.com/app/data-trduh/endpoint/data/beta
+

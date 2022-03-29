@@ -3,6 +3,7 @@ import './App.css';
 import { Button, Divider } from "@material-ui/core";
 import images from './assets/images';
 import Session from './pages/Session';
+import DataView from './pages/DataView';
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,6 +41,11 @@ const Home = () => {
       >
         Create new session
       </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        href="/data"
+      >View data</Button>
 
 
     </div>
@@ -60,6 +66,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/session" element={<Session />}></Route>
+        <Route path="/data" element={<DataView />}></Route>
       </Routes>
 
     </Router>
