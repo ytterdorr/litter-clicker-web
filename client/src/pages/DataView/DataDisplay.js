@@ -1,5 +1,6 @@
 import React from 'react';
 import images from '../../assets/images';
+import "./DataView.css";
 
 const imageTypes = [
     "nicotine",
@@ -12,6 +13,7 @@ const imageTypes = [
 ]
 
 const DataDisplay = ({ data }) => {
+    // data is right now a list of sessions
     console.log("data", data)
     const sumItemsFromSessionList = (sessionList) => {
         // return sessionList[0]
@@ -35,17 +37,38 @@ const DataDisplay = ({ data }) => {
 
     return (
         <div>
-            {Object.entries(sumObject).map(([key, value]) => {
-                return (
-                    <div>
-                        <img src={images[key]} />
-                        <div>{`${key}: ${value}`}</div>
-                    </div>
-                )
-            })
+            <div className="sum-object">
 
-            }
-        </div>
+                {/* {() => {
+                    let sumObjectEntries = [];
+                    imageTypes.forEach(name => {
+                        sumObjectEntries.push(<div key={`${name}-sumObject-key`} className="sum-object-entry">
+                            <img src={images[name]} alt={`${name}-icon`} />
+                            <div className="sum-object-value">{`${name}: ${sumObject[name]}`}</div>
+                        </div>)
+                    })
+                    return sumObjectEntries
+                }
+
+                } */}
+
+
+                {Object.entries(sumObject)
+                    .sort(function (a, b) {
+                        console.log("a", a, "b", b)
+                        return imageTypes.indexOf(a[0]) - imageTypes.indexOf(b[0]);
+                    })
+                    .map(([key, value]) => {
+                        return (
+                            <div key={`${key}-sumObject-key`} className="sum-object-entry">
+                                <img src={images[key]} />
+                                <div className="sum-object-value">{`${key}: ${value}`}</div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div >
     )
 }
 
