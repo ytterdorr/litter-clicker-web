@@ -14,7 +14,6 @@ const imageTypes = [
 
 const DataDisplay = ({ data }) => {
     // data is right now a list of sessions
-    console.log("data", data)
     const sumItemsFromSessionList = (sessionList) => {
         // return sessionList[0]
         let sumObject = {}
@@ -55,7 +54,6 @@ const DataDisplay = ({ data }) => {
 
                 {Object.entries(sumObject)
                     .sort(function (a, b) {
-                        console.log("a", a, "b", b)
                         return imageTypes.indexOf(a[0]) - imageTypes.indexOf(b[0]);
                     })
                     .map(([key, value]) => {

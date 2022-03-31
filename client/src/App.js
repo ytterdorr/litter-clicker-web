@@ -4,6 +4,7 @@ import { Button, Divider } from "@material-ui/core";
 import images from './assets/images';
 import Session from './pages/Session';
 import DataView from './pages/DataView';
+import SessionDataView from './pages/SessionDataView';
 import {
   BrowserRouter as Router,
   Routes,
@@ -67,6 +68,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/session" element={<Session />}></Route>
         <Route path="/data" element={<DataView />}></Route>
+        <Route path="/session_data/:sessionId" element={<SessionDataView />}></Route>
       </Routes>
 
     </Router>

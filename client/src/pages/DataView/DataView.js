@@ -1,67 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { NavigationType } from 'react-router-dom';
 import DataDisplay from './DataDisplay';
-const mockData = require('./MockData.json');
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-// const mockData = {
-//     "documents": [
-//         {
-//             "_id": "622bf2a725fc8423ecabebd1",
-//             "itemCount": 2,
-//             "itemSum": {
-//                 "glass": 0,
-//                 "other": 0,
-//                 "nicotine": 1,
-//                 "metal": 0,
-//                 "paper": 1,
-//                 "food": 0,
-//                 "plastic": 0
-//             }
-//         },
-//         {
-//             "_id": "622bf2b00610843c1f840373",
-//             "itemCount": 2,
-//             "itemSum": {
-//                 "glass": 0,
-//                 "other": 0,
-//                 "nicotine": 1,
-//                 "metal": 0,
-//                 "paper": 1,
-//                 "food": 0,
-//                 "plastic": 0
-//             }
-//         },
-//         {
-//             "_id": "622bf3150610843c1f840374",
-//             "itemCount": 2,
-//             "itemSum": {
-//                 "glass": 0,
-//                 "other": 0,
-//                 "nicotine": 1,
-//                 "metal": 0,
-//                 "paper": 1,
-//                 "food": 0,
-//                 "plastic": 0
-//             }
-//         },
-//         {
-//             "_id": "622bf3410610843c1f840375",
-//             "itemCount": 2,
-//             "itemSum": {
-//                 "glass": 0,
-//                 "other": 0,
-//                 "nicotine": 1,
-//                 "metal": 0,
-//                 "paper": 1,
-//                 "food": 0,
-//                 "plastic": 0
-//             }
-//         }
-//     ]
-// }
+import { MockSessions, MockSessionNames } from './MockData';
 
-const DataView = () => {
-    const [data, setData] = useState({});
-    const [isLoading, setIsLoading] = useState(true)
+const DataView = ({ navigation }) => {
+    // TODO: data should just be a summary object
+    const [data, setData] = useState([]); // List of sessions with items 
+    const [sessionNames, setSessionNames] = useState([]); // List of [{}]
+    const [isLoading, setIsLoading] = useState(true);
     const useMock = true;
 
     useEffect(() => {
@@ -72,7 +21,8 @@ const DataView = () => {
             //         return response.json();
             //     })
             //     .then(jsonData => console.log(jsonData))
-            setData(mockData.documents);
+            setData(MockSessions.documents);
+            setSessionNames(MockSessionNames.documents);
             setIsLoading(false);
             // setData(mockData.documents)
         }
@@ -86,6 +36,14 @@ const DataView = () => {
             }
             console.log(body)
             setData(body.documents)
+
+
+            const namesResponse = await fetch('/get_session_names');
+            const namesBody = await namesResponse.json();
+            if (namesResponse.status !== 200) {
+                throw Error(namesBody.message);
+            }
+            setSessionNames(namesBody.documents)
             setIsLoading(false)
 
         }
@@ -97,15 +55,29 @@ const DataView = () => {
         }
     }, [])
 
+    const mockSessionId = 20220
+
     return (
         <div>
             <h2>Data view</h2>
             {/* <div>{JSON.stringify(data)}</div> */}
             {isLoading
                 ? <div>Loading data...</div>
-                : <DataDisplay data={data} />
+                : <div>
+                    <DataDisplay data={data} />
+                    {/* Break this sesion list to its own component later */}
+                    <div>
+                        {sessionNames.map(session => {
+                            return (
+                                <Button href={`/session_data/${session._id}`}>
+                                    {session.session_name}
+                                </Button>
+                            )
+                        })}
+                    </div>
+                </div>
             }
-        </div>
+        </div >
     )
 }
 

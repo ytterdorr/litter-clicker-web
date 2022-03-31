@@ -1,4 +1,4 @@
-{
+export const MockSessions = {
     "documents": [
         {
             "_id": "622bf2a725fc8423ecabebd1",
@@ -126,3 +126,5 @@
         }
     ]
 }
+
+export const MockSessionNames = { "documents": [{ "_id": "622bf2a725fc8423ecabebd1", "session_name": "Session 0" }, { "_id": "622bf2b00610843c1f840373", "session_name": "Session 1" }, { "_id": "622bf3150610843c1f840374", "session_name": "Session 2" }, { "_id": "622bf3410610843c1f840375", "session_name": "Session 3" }] }
