@@ -1,2 +1,6 @@
 TODO: 
 - Use the general data fetching function for get mongo data.
+- Need filter on the api request
+
+Bigger project: 
+use Realm. Setup a user that can only read from the sessions data. 
