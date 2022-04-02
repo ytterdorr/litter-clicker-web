@@ -7,9 +7,10 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "express": "^4.17.3",
     "axios": "^0.26.0",
+    "express": "^4.17.3",
     "history": "^5.2.0",
+    "mapbox-gl": "^2.7.1",
     "mongodb": "^4.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -24,7 +25,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
       "react-app",

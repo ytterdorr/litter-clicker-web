@@ -1,3 +1,31 @@
+=> Create a map view component.
+
+
+Session Data View:
+- Load correct session from database based on ID
+- - use mock
+- - How to filter MongoDB request?
+- show map 
+- - With react? Or HTML?
+- - Does it work with public key?
+- - Hmm. I shall try mapbox-react-gl
+
+Multi session
+- Set up multi session object in database.
+- Add some session ids.
+- Make page on web
+- - show map
+- - Show participating sessions
+- - (Show participating users?)
+
+Also need to fix pushing from the phone app
+
+
+Alternatives in connecting:
+ Instead of API key, could use realm with a user that can only read data. That could be useful. 
+- 
+
+
 What needs to be done:
 - Set up a backend server with express. To handle data collection from MongoDB (hide the api key)
 - There was something about a special line for heroku to build the client after upload. 

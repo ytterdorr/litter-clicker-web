@@ -9,7 +9,7 @@ import other from './other.png';
 import push from './push.png';
 
 export {
-    nicotine, 
+    nicotine,
     plastic,
     paper,
     food,
@@ -20,7 +20,7 @@ export {
 }
 
 export const icons = {
-    nicotine, 
+    nicotine,
     plastic,
     paper,
     food,
@@ -31,7 +31,7 @@ export const icons = {
 }
 
 const images = {
-    nicotine, 
+    nicotine,
     plastic,
     paper,
     food,
@@ -40,4 +40,15 @@ const images = {
     other,
     push,
 }
+
+export const imageNames = [
+    "nicotine",
+    "plastic",
+    "paper",
+    "food",
+    "glass",
+    "metal",
+    "other",
+    "push",
+]
 export default images;

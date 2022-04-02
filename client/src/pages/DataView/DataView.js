@@ -4,7 +4,7 @@ import DataDisplay from './DataDisplay';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import { MockSessions, MockSessionNames } from './MockData';
+import { MockSessions, MockSessionNames } from '../../assets/MockData';
 
 const DataView = ({ navigation }) => {
     // TODO: data should just be a summary object

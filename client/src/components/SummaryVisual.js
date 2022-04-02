@@ -1,5 +1,5 @@
 import React from 'react';
-import images from '../../assets/images';
+import images from '../assets/images';
 import "./DataView.css";
 
 const imageTypes = [
@@ -12,27 +12,27 @@ const imageTypes = [
     "other"
 ]
 
-const SummaryVisual = ({ data }) => {
+const SummaryVisual = ({ sumObject }) => {
     // data is right now a list of sessions
-    const sumItemsFromSessionList = (sessionList) => {
-        // return sessionList[0]
-        let sumObject = {}
-        sessionList.map(session => {
-            console.log(session)
+    // const sumItemsFromSessionList = (sessionList) => {
+    //     // return sessionList[0]
+    //     let sumObject = {}
+    //     sessionList.map(session => {
+    //         console.log(session)
 
-            Object.entries(session.itemSum).map(([key, value]) => {
-                if (sumObject[key]) {
-                    sumObject[key] += value
-                } else {
-                    sumObject[key] = value;
-                }
-            })
-        })
-        return sumObject
-        // return { yay: "nay" }
-    }
+    //         Object.entries(session.itemSum).map(([key, value]) => {
+    //             if (sumObject[key]) {
+    //                 sumObject[key] += value
+    //             } else {
+    //                 sumObject[key] = value;
+    //             }
+    //         })
+    //     })
+    //     return sumObject
+    //     // return { yay: "nay" }
+    // }
 
-    const sumObject = sumItemsFromSessionList(data);
+    // const sumObject = sumItemsFromSessionList(data);
 
     return (
         <div>
