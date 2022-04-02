@@ -11,7 +11,6 @@ const SessionDataView = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [sessionData, setSessionData] = useState({});
     const { sessionId } = useParams()
-    console.log(sessionId)
 
     useEffect(() => {
         const getSessionDataById = async (sessionId) => {
@@ -33,15 +32,15 @@ const SessionDataView = ({ route, navigation }) => {
             <h2>
                 Session Data View
             </h2>
-            <div>sessionId: {sessionId}</div>
             {isLoading
                 ? <h3>Loading...</h3>
                 : <div>
+                    <h3>{sessionData.session_name}</h3>
                     <MapDisplay
                         data={sessionData.items}
                     ></MapDisplay>
                     <SummaryVisual sumObject={sessionData.itemSum}></SummaryVisual>
-                    <div>{JSON.stringify(sessionData)}</div>
+                    {/* <div>{JSON.stringify(sessionData)}</div> */}
                 </div>}
         </div>
     )

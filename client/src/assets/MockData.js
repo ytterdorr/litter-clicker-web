@@ -131,6 +131,7 @@ export const MockSessionNames = { "documents": [{ "_id": "622bf2a725fc8423ecabeb
 
 export const MockSingleSession = {
     "_id": "622bf2a725fc8423ecabebd1",
+    "session_name": "Example Session",
     "items": {
         "0": {
             "name": "nicotine",
