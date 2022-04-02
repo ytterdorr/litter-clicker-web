@@ -104,7 +104,7 @@ const MapDisplay = ({ data }) => {
     })
 
     return (
-        <div>
+        <div className="map-wrapper">
             <div>
                 <div ref={mapContainer} className="map-container" />
             </div>
