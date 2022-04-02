@@ -1,14 +1,13 @@
-=> Create a map view component.
-
+=o= Create a map view component.
+- =o= calculate and set center point.
+- =o= style the attribution info 
+- =o= position the sidebar
 
 Session Data View:
 - Load correct session from database based on ID
 - - use mock
 - - How to filter MongoDB request?
-- show map 
-- - With react? Or HTML?
-- - Does it work with public key?
-- - Hmm. I shall try mapbox-react-gl
+
 
 Multi session
 - Set up multi session object in database.

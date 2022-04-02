@@ -36,21 +36,39 @@ const featureCollectionFromItemList = (itemList) => {
     return featureCollection
 }
 
+const calculateCenterPointFromItemList = (itemList) => {
+    console.log("itemList", itemList);
+    // returns [centerLat, centerLng]
+    let [maxLat, minLat, maxLng, minLng] = [-10000, 10000, -1000, 1000];
+    itemList.forEach(item => {
+        const lat = item.location.latitude;
+        const lng = item.location.longitude;
+        if (lat > maxLat) { maxLat = lat }
+        if (lat < minLat) { minLat = lat }
+        if (lng > maxLng) { maxLng = lng }
+        if (lng < minLng) { minLng = lng }
+    })
+
+    const centerLat = (maxLat + minLat) / 2
+    const centerLng = (maxLng + minLng) / 2
+    return [centerLat, centerLng]
+
+}
+
 
 const MapDisplay = ({ data }) => {
     // Data is expected to be an itemList
+    // The data comes in an odd object format. 
+    const itemList = Object.entries(data).map(([index, item]) => item)
+    const featureCollection = featureCollectionFromItemList(itemList)
+    const [centerLat, centerLng] = calculateCenterPointFromItemList(itemList)
 
     // Expects map points? Items? Something with coordinates
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(-122.0840356);
-    const [lat, setLat] = useState(37.4220065);
+    const [lng, setLng] = useState(centerLng);
+    const [lat, setLat] = useState(centerLat);
     const [zoom, setZoom] = useState(9);
-
-    // The data comes in an odd object format. 
-    const itemList = Object.entries(data).map(([index, item]) => item)
-    const featureCollection = featureCollectionFromItemList(itemList)
-
     useEffect(() => {
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
@@ -63,8 +81,6 @@ const MapDisplay = ({ data }) => {
 
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
-
-        // TODO: Should set dynamic center point
         map.current.on('move', () => {
             setLng(map.current.getCenter().lng.toFixed(4));
             setLat(map.current.getCenter().lat.toFixed(4));
