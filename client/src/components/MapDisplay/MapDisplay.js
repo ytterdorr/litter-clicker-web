@@ -2,12 +2,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import { imageNames } from '../../assets/images';
 import './MapDisplay.css';
+import './MapboxGL.css'; // copied official styling from https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css
 import Images from '../../assets/images';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieXR0ZXJkb3JyIiwiYSI6ImNreGk0dm54dDA3NHgyd281eHh4bm5ueWoifQ.V43vZ77_zZcM9bnZFx8l0Q';
 
 const featureCollectionFromItemList = (itemList) => {
-    console.log("itemList", itemList)
+    // console.log("itemList", itemList)
 
     const featureCollection = {
         "type": "FeatureCollection",
@@ -45,7 +46,7 @@ const MapDisplay = ({ data }) => {
     const [lng, setLng] = useState(-122.0840356);
     const [lat, setLat] = useState(37.4220065);
     const [zoom, setZoom] = useState(9);
-    console.log("data", data)
+
     // The data comes in an odd object format. 
     const itemList = Object.entries(data).map(([index, item]) => item)
     const featureCollection = featureCollectionFromItemList(itemList)
@@ -62,20 +63,14 @@ const MapDisplay = ({ data }) => {
 
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
+
+        // TODO: Should set dynamic center point
         map.current.on('move', () => {
             setLng(map.current.getCenter().lng.toFixed(4));
             setLat(map.current.getCenter().lat.toFixed(4));
             setZoom(map.current.getZoom().toFixed(2));
         })
         map.current.on('load', () => {
-
-            // map.current.addSource("itemsSource", {
-            //     type: "geojson",
-            //     data: featureCollection
-
-            // })
-        })
-        map.current.on('style.load', () => {
             // Load data source
             map.current.addSource("itemsSource", {
                 type: "geojson",
@@ -83,17 +78,15 @@ const MapDisplay = ({ data }) => {
 
             })
 
-            // Add image layer
+            // Add image layers
             Object.entries(Images).forEach(([imgName, imgData]) => {
-
                 map.current.loadImage(imgData, (error, image) => {
                     if (error) {
                         throw error;
                     }
-
-                    console.log("Should have loaded the image now")
-                    console.log(image)
+                    // Add image
                     map.current.addImage(imgName, image)
+                    // Add layer
                     map.current.addLayer({
                         'id': `${imgName}Layer`,
                         'source': 'itemsSource',
@@ -112,10 +105,12 @@ const MapDisplay = ({ data }) => {
 
     return (
         <div>
+            <div>
+                <div ref={mapContainer} className="map-container" />
+            </div>
             <div className="sidebar">
                 Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>
-            <div ref={mapContainer} className="map-container" />
         </div>
     )
 }
