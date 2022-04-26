@@ -1,0 +1,7 @@
+.privacyContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 800px;
+
+}
