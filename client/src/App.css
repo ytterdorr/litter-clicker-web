@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -54,7 +55,7 @@
   align-items: center;
   margin-bottom: 1rem;
   flex-wrap: wrap;
-  
+
 }
 
 .smallMargin {
@@ -63,4 +64,11 @@
 
 .main-header {
   font-size: 3rem;
+}
+
+.privacyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
 }
